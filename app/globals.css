@@ -247,6 +247,7 @@ option {
   box-shadow:
     0 8px 25px var(--color-shadow-pink),
     0 0 0 3px rgba(255, 255, 255, 0.3) inset;
+  border: 2px solid black;
 }
 
 /* Ensure button text is readable */

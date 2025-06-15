@@ -86,7 +86,7 @@ function SimpleVoiceAssistant(props: { onConnectButtonClicked: () => void; room:
               transition={{ duration: 0.6, delay: 0.2, ease: [0.68, -0.55, 0.265, 1.55] }}
               className="text-center"
             >
-              <div className="text-6xl mb-6 wiggle">🎪</div>
+              <div className="text-6xl mb-6 wiggle ">🎪</div>
               <motion.button
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -115,7 +115,9 @@ function SimpleVoiceAssistant(props: { onConnectButtonClicked: () => void; room:
               <div className="flex-1 w-full max-h-[40vh] overflow-y-auto theme-card p-6">
                 <div className="flex items-center gap-2 mb-4">
                   <span className="text-2xl">📜</span>
-                  <h3 className="text-xl font-semibold text-[var(--color-text-primary)]">Story Transcript</h3>
+                  <h3 className="text-xl font-semibold text-[var(--color-text-primary)]">
+                    Story Transcript
+                  </h3>
                   <span className="text-2xl floating-element">✨</span>
                 </div>
                 <div className="text-[var(--color-text-primary)]">
