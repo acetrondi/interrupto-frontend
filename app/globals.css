@@ -1,0 +1,533 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Comic+Neue:wght@300;400;700&display=swap");
+
+@theme {
+  /* Cartoony Main Theme Colors */
+  --color-primary: #ff6b9d;
+  --color-primary-dark: #e55a8a;
+  --color-primary-light: #ffb3d1;
+
+  /* Secondary Colors - Playful purples and blues */
+  --color-secondary: #6c5ce7;
+  --color-secondary-dark: #574dd1;
+  --color-secondary-light: #a29bfe;
+
+  /* Accent Colors - Warm oranges and yellows */
+  --color-accent: #fdcb6e;
+  --color-accent-dark: #e17055;
+  --color-accent-light: #fff7e6;
+
+  /* Fun tertiary colors */
+  --color-tertiary: #55efc4;
+  --color-tertiary-dark: #00b894;
+  --color-tertiary-light: #d1f2eb;
+
+  /* Background Colors - Soft and welcoming */
+  --color-bg-primary: #fff8f0;
+  --color-bg-secondary: #f8f3ff;
+  --color-bg-tertiary: #e8f4f8;
+  --color-bg-card: #ffffff;
+
+  /* Text Colors */
+  --color-text-primary: #2d3436;
+  --color-text-secondary: #636e72;
+  --color-text-light: #b2bec3;
+  --color-text-on-primary: #ffffff;
+  --color-text-on-dark: #ffffff;
+
+  /* UI Element Colors */
+  --color-border: #ddd6fe;
+  --color-shadow: rgba(108, 92, 231, 0.25);
+  --color-shadow-warm: rgba(253, 203, 110, 0.3);
+  --color-shadow-pink: rgba(255, 107, 157, 0.25);
+  --color-overlay: rgba(45, 52, 54, 0.6);
+
+  /* Status Colors */
+  --color-success: #00b894;
+  --color-warning: #fdcb6e;
+  --color-error: #e17055;
+  --color-info: #74b9ff;
+}
+
+:root {
+  /* LiveKit Specific Variables */
+  --lk-va-bar-width: 72px;
+  --lk-control-bar-height: unset;
+
+  /* Custom App Variables */
+  --header-height: 4rem;
+  --footer-height: 4rem;
+  --content-max-width: 1024px;
+  --border-radius-sm: 8px;
+  --border-radius-md: 16px;
+  --border-radius-lg: 24px;
+  --border-radius-xl: 32px;
+  --transition-speed: 0.3s;
+  --bounce-transition: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Base Styles */
+body {
+  background: linear-gradient(135deg, var(--color-bg-primary) 0%, var(--color-bg-secondary) 100%);
+  color: var(--color-text-primary) !important;
+  font-family: "Fredoka", "Comic Neue", cursive, sans-serif;
+  font-weight: 400;
+  min-height: 100vh;
+}
+
+/* Force text visibility - make all text dark */
+* {
+  color: var(--color-text-primary) !important;
+}
+
+/* Specific text color overrides */
+p,
+span,
+div,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+label,
+button,
+a {
+  color: var(--color-text-primary) !important;
+}
+
+/* LiveKit component text overrides */
+.lk-participant-name,
+.lk-chat-message,
+.lk-button,
+.lk-control-bar,
+.lk-media-device-menu,
+.lk-disconnect-button,
+.lk-agent-control-bar,
+.lk-audio-visualizer {
+  color: var(--color-text-primary) !important;
+}
+
+/* Additional text color overrides for common elements */
+input,
+textarea,
+select,
+option {
+  color: var(--color-text-primary) !important;
+}
+
+/* Override any white/light text */
+[style*="color: white"],
+[style*="color: #fff"],
+[style*="color: #ffffff"],
+[style*="color: rgba(255, 255, 255"] {
+  color: var(--color-text-primary) !important;
+}
+
+/* Component Styles */
+.agent-visualizer > .lk-audio-bar {
+  width: var(--lk-va-bar-width);
+  border-radius: var(--border-radius-lg);
+  background: linear-gradient(45deg, var(--color-primary), var(--color-secondary));
+}
+
+.lk-agent-control-bar {
+  @apply border-t-0 p-0 h-min mr-4;
+  border-radius: var(--border-radius-lg);
+  background: var(--color-bg-card);
+  box-shadow: 0 8px 32px var(--color-shadow);
+  border: 3px solid var(--color-border);
+}
+
+.lk-disconnect-button {
+  @apply hover:bg-[var(--color-error)];
+  background: var(--color-bg-card) !important;
+  border: 3px solid var(--color-error) !important;
+  color: var(--color-error) !important;
+  border-radius: var(--border-radius-lg);
+  transition: all 0.3s var(--bounce-transition);
+  font-family: "Fredoka", cursive;
+  font-weight: 600;
+  height: 48px;
+  width: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lk-disconnect-button:hover {
+  background: var(--color-error) !important;
+  color: white !important;
+}
+
+.lk-disconnect-button,
+.lk-disconnect-button * {
+  color: var(--color-error) !important;
+}
+
+.lk-disconnect-button:hover,
+.lk-disconnect-button:hover * {
+  color: white !important;
+}
+
+.lk-disconnect-button:hover {
+  transform: scale(1.1) rotate(-5deg);
+  box-shadow: 0 8px 25px rgba(225, 112, 85, 0.4);
+}
+
+/* Custom Utility Classes */
+.theme-shadow {
+  box-shadow:
+    0 10px 25px var(--color-shadow),
+    0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+}
+
+.theme-shadow-warm {
+  box-shadow:
+    0 10px 25px var(--color-shadow-warm),
+    0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+}
+
+.theme-shadow-pink {
+  box-shadow:
+    0 10px 25px var(--color-shadow-pink),
+    0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+}
+
+.theme-transition {
+  transition: all var(--transition-speed) var(--bounce-transition);
+}
+
+.theme-card {
+  background: var(--color-bg-card);
+  border-radius: var(--border-radius-lg);
+  box-shadow:
+    0 8px 32px var(--color-shadow),
+    0 0 0 3px var(--color-border);
+  color: var(--color-text-primary) !important;
+  border: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.theme-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    var(--color-primary),
+    var(--color-secondary),
+    var(--color-accent)
+  );
+  border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
+}
+
+.theme-button {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary)) !important;
+  color: var(--color-text-on-primary) !important;
+  padding: 1rem 2rem;
+  border-radius: var(--border-radius-xl);
+  transition: all 0.3s var(--bounce-transition);
+  border: none;
+  font-weight: 600;
+  font-family: "Fredoka", cursive;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow:
+    0 8px 25px var(--color-shadow-pink),
+    0 0 0 3px rgba(255, 255, 255, 0.3) inset;
+}
+
+/* Ensure button text is readable */
+.theme-button,
+.theme-button * {
+  color: var(--color-text-on-primary) !important;
+}
+
+.theme-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s;
+}
+
+.theme-button:hover::before {
+  left: 100%;
+}
+
+.theme-button:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow:
+    0 15px 35px var(--color-shadow-pink),
+    0 0 0 3px rgba(255, 255, 255, 0.4) inset;
+}
+
+.theme-button:active {
+  transform: translateY(-1px) scale(1.02);
+}
+
+/* Storyteller specific styles */
+.storyteller-title {
+  font-family: "Fredoka", cursive;
+  font-weight: 700;
+  background: linear-gradient(
+    135deg,
+    var(--color-primary),
+    var(--color-secondary),
+    var(--color-accent)
+  );
+  -webkit-background-clip: text;
+  /* -webkit-text-fill-color: transparent; */
+  background-clip: text;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.storyteller-title::after {
+  content: "✨";
+  position: absolute;
+  right: -40px;
+  top: -10px;
+  font-size: 1.5rem;
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+.storyteller-container {
+  background: var(--color-bg-card);
+  border-radius: var(--border-radius-xl);
+  border: 4px solid transparent;
+  background-clip: padding-box;
+  position: relative;
+}
+
+.storyteller-container::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  background: linear-gradient(
+    135deg,
+    var(--color-primary),
+    var(--color-secondary),
+    var(--color-accent),
+    var(--color-tertiary)
+  );
+  border-radius: var(--border-radius-xl);
+  z-index: -1;
+}
+
+/* Enhanced visualizer styles */
+.agent-visualizer {
+  background: linear-gradient(135deg, var(--color-bg-secondary), var(--color-bg-tertiary));
+  border-radius: var(--border-radius-xl);
+  padding: 2rem;
+  border: 3px solid var(--color-border);
+  position: relative;
+  overflow: hidden;
+}
+
+.agent-visualizer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(circle at 20% 80%, rgba(255, 107, 157, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(108, 92, 231, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Animation Classes */
+.fade-in {
+  animation: fadeIn var(--transition-speed) ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.slide-up {
+  animation: slideUp var(--transition-speed) ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.bounce-in {
+  animation: bounceIn 0.6s var(--bounce-transition);
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.9;
+  }
+  70% {
+    transform: scale(0.9);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes sparkle {
+  0%,
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2) rotate(180deg);
+    opacity: 0.8;
+  }
+}
+
+.wiggle {
+  animation: wiggle 2s ease-in-out infinite;
+}
+
+@keyframes wiggle {
+  0%,
+  7% {
+    transform: rotateZ(0);
+  }
+  15% {
+    transform: rotateZ(-15deg);
+  }
+  20% {
+    transform: rotateZ(10deg);
+  }
+  25% {
+    transform: rotateZ(-10deg);
+  }
+  30% {
+    transform: rotateZ(6deg);
+  }
+  35% {
+    transform: rotateZ(-4deg);
+  }
+  40%,
+  100% {
+    transform: rotateZ(0);
+  }
+}
+
+/* Fun floating elements */
+.floating-element {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Storyteller message styles */
+.storyteller-message-ai {
+  background: linear-gradient(135deg, var(--color-bg-secondary), var(--color-bg-tertiary));
+  border-radius: var(--border-radius-lg);
+  padding: 1rem;
+  margin-right: 2rem;
+  border: 2px solid var(--color-border);
+  box-shadow: 0 4px 12px var(--color-shadow);
+  position: relative;
+  align-self: flex-start;
+}
+
+.storyteller-message-ai::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-secondary), var(--color-accent));
+  border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
+}
+
+.storyteller-message-user {
+  background: linear-gradient(135deg, var(--color-primary-light), var(--color-accent-light));
+  border-radius: var(--border-radius-lg);
+  padding: 1rem;
+  margin-left: 2rem;
+  border: 2px solid var(--color-primary);
+  box-shadow: 0 4px 12px var(--color-shadow-pink);
+  position: relative;
+  align-self: flex-end;
+}
+
+.storyteller-message-user::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-secondary);
+  border-radius: var(--border-radius-lg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  border-radius: var(--border-radius-lg);
+  border: 2px solid var(--color-bg-secondary);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, var(--color-secondary), var(--color-accent));
+}
